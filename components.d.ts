@@ -7,13 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppBarUserMenu: typeof import('./src/components/layout/app-bar-user-menu/AppBarUserMenu.vue')['default']
-    Blank: typeof import('./src/components/layout/Blank.vue')['default']
-    Contents: typeof import('./src/components/layout/Contents.vue')['default']
-    Header: typeof import('./src/components/layout/Header.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VerticalNavMenu: typeof import('./src/components/layout/vertical-nav-menu/VerticalNavMenu.vue')['default']
-    Wrap: typeof import('./src/components/layout/Wrap.vue')['default']
   }
 }

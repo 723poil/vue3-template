@@ -1,20 +1,4 @@
 {
-    "files": [],
-    "references": [
-      {
-        "path": "./tsconfig.node.json"
-      },
-      {
-        "path": "./tsconfig.app.json"
-      }
-    ],
-    "compilerOptions": {
-      "types": ["vuetify", "node"],
-      "moduleResolution": "node",
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./src/*"],
-      }
-    },
-    "typeRoots": ["src/declare"]
-  }
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
+}

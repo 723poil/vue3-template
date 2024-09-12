@@ -17,7 +17,7 @@ export default [
       tsconfigRootDir: path.resolve(),
       sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "vue", "prettier"], // Vue, TypeScript, Prettier 플러그인 사용
+    plugins: ["@typescript-eslint", "vue", "prettier", "nuxt"], // Vue, TypeScript, Prettier 플러그인 사용
     extends: [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",

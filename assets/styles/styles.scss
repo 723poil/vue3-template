@@ -1106,8 +1106,11 @@
         }
       }
     }
-  
+    
     .v-list-item {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+
       .v-list-item-title {
         font-size: 13px;
         opacity: 0.6;
@@ -1120,12 +1123,10 @@
         width: 40px;
       }
   
-      .v-list-item__append {
+      &.v-list-item__append {
         width: 40px;
       }
   
-      padding-left: 8px !important;
-      padding-right: 8px !important;
     }
   
     .v-main {

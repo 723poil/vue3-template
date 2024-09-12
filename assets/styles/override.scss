@@ -2,11 +2,12 @@ html {
     font-family: $font-family;
   
     .v-application {
+      font-family: $font-family, sans-serif !important;
+      
       [class*="text-"] {
         font-family: $font-family, sans-serif !important;
       }
   
-      font-family: $font-family, sans-serif !important;
     }
   
     .bg-light-primary {
