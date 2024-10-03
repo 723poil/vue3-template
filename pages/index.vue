@@ -4,6 +4,6 @@
 </template>
 <script setup lang="ts">
 definePageMeta({
-  layout: "test",
+  layout: "vertical-nav-layout",
 });
 </script>
