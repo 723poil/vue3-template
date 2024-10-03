@@ -24,7 +24,7 @@
             <button
               class="flex items-center justify-between px-4 py-2 text-gray-700 rounded-lg text-2xl hover:bg-gray-200"
             >
-              <Icon :icon="mdiLogout" :size="16"></Icon>
+              <Icon :icon="mdiLogout" class="mr-1" :size="16"></Icon>
               <span class="text-tiny">로그아웃</span>
             </button>
           </div>
@@ -35,16 +35,20 @@
     <main class="flex bg-gray-100">
       <!-- 사이드 바 -->
       <Transition name="side">
-        <aside v-if="sideToggle" :class="bgColor" class="w-64 sm:hidden md:block">
+        <aside
+          v-if="!sideToggle"
+          :class="bgColor"
+          class="w-64 sm:hidden md:block shadow-[16px_0px_24px_-12px_rgba(0,0,15,0.7)]"
+        >
           <nav class="block text-white text-base font-semibold pt-3">
             <SideItem :icon="mdiViewDashboard" text="Dashboard"></SideItem>
           </nav>
         </aside>
       </Transition>
 
-      <div class="w-full flex flex-col h-screen overflow-y-hidden">
+      <div class="w-full flex flex-col h-screen overflow-y-hidden p-5">
         <!-- 모바일 전용 메뉴 -->
-        <header>모바일 메뉴</header>
+        <header v-if="sideToggle" class="sm:block md:hidden">모바일 메뉴</header>
 
         <!-- 메인 페이지 -->
         <slot />
@@ -56,7 +60,7 @@
 <script lang="ts" setup>
 import { type Ref, ref } from "vue";
 import { mdiLogout, mdiMenu, mdiViewDashboard } from "@mdi/js";
-import SideItem from "~/components/sidebar/side-item.vue";
+import SideItem from "@/components/sidebar/side-item.vue";
 
 definePageMeta({
   name: "vertical-nav-layout",
