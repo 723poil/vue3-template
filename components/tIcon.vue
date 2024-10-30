@@ -14,10 +14,6 @@
 <script setup lang="ts">
 import { toRefs, computed } from "vue";
 
-definePageMeta({
-  name: "icon",
-});
-
 const props = defineProps({
   icon: {
     type: String,

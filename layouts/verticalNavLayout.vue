@@ -11,7 +11,7 @@
                 class="px-4 py-2 text-gray-700 rounded-lg text-2xl hover:bg-gray-200"
                 @click="sideToggle = !sideToggle"
               >
-                <Icon :icon="mdiMenu"></Icon>
+                <t-icon :icon="mdiMenu"></t-icon>
               </button>
               <div class="flex items-center text-2xl font-bold ml-3">
                 <a href="/">Home</a>
@@ -24,7 +24,7 @@
             <button
               class="flex items-center justify-between px-4 py-2 text-gray-700 rounded-lg text-2xl hover:bg-gray-200"
             >
-              <Icon :icon="mdiLogout" class="mr-1" :size="16"></Icon>
+              <t-icon :icon="mdiLogout" class="mr-1" :size="16"></t-icon>
               <span class="text-tiny">로그아웃</span>
             </button>
           </div>
@@ -41,7 +41,7 @@
           class="w-64 sm:hidden md:block shadow-[16px_0px_24px_-12px_rgba(0,0,15,0.7)]"
         >
           <nav class="block text-white text-base font-semibold pt-3">
-            <SideItem :icon="mdiViewDashboard" text="Dashboard"></SideItem>
+            <t-side-item :icon="mdiViewDashboard" text="Dashboard"></t-side-item>
           </nav>
         </aside>
       </Transition>
@@ -60,11 +60,6 @@
 <script lang="ts" setup>
 import { type Ref, ref } from "vue";
 import { mdiLogout, mdiMenu, mdiViewDashboard } from "@mdi/js";
-import SideItem from "@/components/sidebar/side-item.vue";
-
-definePageMeta({
-  name: "vertical-nav-layout",
-});
 
 const bgColor: string = "bg-blue-500";
 

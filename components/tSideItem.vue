@@ -1,15 +1,11 @@
 <template>
   <a href="" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
-    <Icon class="mr-3" :icon="icon" :size="size"></Icon>
+    <t-icon class="mr-3" :icon="icon" :size="size"></t-icon>
     {{ text }}
   </a>
 </template>
 <script setup lang="ts">
 import { toRefs } from "vue";
-
-definePageMeta({
-  name: "sideItem",
-});
 
 const props = defineProps({
   icon: {
