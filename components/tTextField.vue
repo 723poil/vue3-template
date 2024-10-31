@@ -7,7 +7,7 @@
       :id="id"
       :type="type"
       :placeholder="placeholder"
-      :value="modelValue"
+      :value="computedModelValue"
       :class="[
         'block w-full px-4 py-2 border rounded-md transition duration-200 ease-in-out',
         error
@@ -15,18 +15,24 @@
           : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500',
         'focus:outline-none focus:ring-1',
       ]"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="updateValue($event)"
     />
     <p v-if="error" class="text-red-500 text-sm mt-1">{{ errorMessage }}</p>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 
 const props = defineProps({
-  label: String,
-  modelValue: String,
+  label: {
+    type: String,
+    default: "",
+  },
+  modelValue: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     default: "text",
@@ -48,4 +54,12 @@ const props = defineProps({
 const emits = defineEmits(["update:modelValue"]);
 
 const id = computed(() => `input-${Math.random().toString(36).substring(2, 10)}`);
+
+const computedModelValue = computed(() => {
+  return props.modelValue;
+});
+
+const updateValue = (event: Event) => {
+  emits("update:modelValue", (event.target as HTMLInputElement).value);
+};
 </script>

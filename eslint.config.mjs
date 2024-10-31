@@ -42,6 +42,8 @@ export default [
       "comma-dangle": "off",
       "@typescript-eslint/no-explicit-any": "off", // any 타입 허용
       "@typescript-eslint/explicit-function-return-type": "off",
+      "no-undef": "off",
+      "@typescript-eslint/no-unused-vars": "off"
     },
   }),
 ];

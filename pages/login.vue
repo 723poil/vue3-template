@@ -40,8 +40,7 @@
     </main>
   </div>
 </template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type Ref, ref } from "vue";
 
 definePageMeta({
@@ -55,11 +54,11 @@ const id: Ref<string> = ref("");
 const password: Ref<string> = ref("");
 
 const updateId = (value: string) => {
-  id.value = value;
+  id.value = value.replaceAll(" ", "");
 };
 
 const updatePassword = (value: string) => {
-  password.value = value;
+  password.value = value.replaceAll(" ", "");
 };
 
 const login = () => {
