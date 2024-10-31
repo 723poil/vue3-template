@@ -1,6 +1,6 @@
 <template>
   <t-row>
-    <t-col :cols="tCols[12]">
+    <t-col :lg="tCols[12]">
       <t-card>
         <template #title>title</template>
         <template #content>content</template>

@@ -23,6 +23,7 @@
           <div>
             <button
               class="flex items-center justify-between px-4 py-2 text-gray-700 rounded-lg text-2xl hover:bg-gray-200"
+              @click="logout"
             >
               <t-icon :icon="mdiLogout" class="mr-1" :size="16"></t-icon>
               <span class="text-tiny">로그아웃</span>
@@ -35,11 +36,7 @@
     <main class="flex bg-gray-100">
       <!-- 사이드 바 -->
       <Transition name="side">
-        <aside
-          v-if="!sideToggle"
-          :class="bgColor"
-          class="w-64 sm:hidden md:block shadow-[16px_0px_24px_-12px_rgba(0,0,15,0.7)]"
-        >
+        <aside v-if="sideToggle" :class="bgColor" class="w-64 sm:hidden md:block">
           <nav class="block text-white text-base font-semibold pt-3">
             <t-side-item :icon="mdiViewDashboard" text="Dashboard"></t-side-item>
           </nav>
@@ -48,7 +45,7 @@
 
       <div class="w-full flex flex-col h-screen overflow-y-hidden p-5">
         <!-- 모바일 전용 메뉴 -->
-        <header v-if="sideToggle" class="sm:block md:hidden">모바일 메뉴</header>
+        <header v-if="!sideToggle" class="sm:block md:hidden">모바일 메뉴</header>
 
         <!-- 메인 페이지 -->
         <slot />
@@ -61,9 +58,15 @@
 import { type Ref, ref } from "vue";
 import { mdiLogout, mdiMenu, mdiViewDashboard } from "@mdi/js";
 
+const router = useRouter();
+
 const bgColor: string = "bg-blue-500";
 
 const sideToggle: Ref<boolean> = ref(true);
+
+const logout = () => {
+  router.replace({ path: "/login" });
+};
 </script>
 
 <style scoped>

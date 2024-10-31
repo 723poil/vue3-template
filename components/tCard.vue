@@ -1,6 +1,6 @@
 <template>
   <div :class="computedClass">
-    <h2 class="font-bold text-xl mb-2">
+    <h2 class="font-bold text-3xl text-gray-500 mb-2" :class="titleClass">
       <slot name="title" />
     </h2>
     <p class="text-gray-700 text-base">
@@ -9,7 +9,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, toRefs } from "vue";
 import { tBgColor } from "~/type/css/t.bg.color";
 
 const props = defineProps({
@@ -25,9 +25,20 @@ const props = defineProps({
     type: String,
     default: "w-full",
   },
+  flat: {
+    type: Boolean,
+    default: false,
+  },
+  titleClass: {
+    type: String,
+    default: "",
+  },
 });
 
+const { bgColor, rounded, width, flat, titleClass } = toRefs(props);
+
 const computedClass = computed(
-  () => `${props.bgColor} ${props.rounded ? "rounded" : ""} ${props.width} overflow-hidden shadow-lg p-6`,
+  () =>
+    `${bgColor.value} ${rounded.value ? "rounded" : ""} ${width.value} overflow-hidden ${flat.value ? "" : "shadow-lg"} p-6`,
 );
 </script>

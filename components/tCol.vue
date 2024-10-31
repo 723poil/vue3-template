@@ -4,11 +4,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, toRefs } from "vue";
 import { tCols } from "~/type/css/t.cols";
 
 const props = defineProps({
-  cols: {
+  lg: {
     type: String,
     default: tCols[12],
   },
@@ -26,5 +26,7 @@ const props = defineProps({
   },
 });
 
-const computedClass = computed(() => `${props.cols} ${props.md} ${props.sm} ${props.rounded ? "rounded" : ""} px-2`);
+const { lg, md, sm, rounded } = toRefs(props);
+
+const computedClass = computed(() => `${lg.value} ${md.value} ${sm.value} ${rounded.value ? "rounded" : ""} px-2`);
 </script>
