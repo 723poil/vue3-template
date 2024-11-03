@@ -1,49 +1,47 @@
 <template>
   <div class="relative">
-    <label v-if="label" :for="id" class="absolute left-2 -top-2 text-gray-600 text-sm bg-white px-1">
+    <label v-if="label" :for="id" class="block mb-2 text-sm font-medium text-gray-600">
       {{ label }}
     </label>
-    <input
+    <select
       :id="id"
-      :type="type"
-      :placeholder="placeholder"
       :value="computedModelValue"
       :class="[
         'block w-full px-4 py-2 border rounded-md transition duration-200 ease-in-out',
-        error
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500',
+        error ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-blue-500',
         'focus:outline-none focus:ring-1',
+        'bg-white',
       ]"
-      @input="updateValue($event)"
-    />
+      @change="updateValue($event)"
+    >
+      <option v-for="option in options" :key="option.value" :value="option.value">
+        {{ option.label }}
+      </option>
+    </select>
     <p v-if="error" class="text-red-500 text-sm mt-1">{{ errorMessage }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, type PropType } from "vue";
 
 const props = defineProps({
   id: {
     type: String,
-    default: `input-${Math.random().toString(36).substring(2, 10)}`,
+    default: `select-${Math.random().toString(36).substring(2, 10)}`,
   },
   label: {
     type: String,
     default: "",
   },
   modelValue: {
-    type: String,
+    type: [String, Number],
     default: "",
   },
-  type: {
-    type: String,
-    default: "text",
-  },
-  placeholder: {
-    type: String,
-    default: " ",
+  options: {
+    type: Array as PropType<{ [key: string]: any }[]>,
+    required: true,
+    default: () => [],
   },
   error: {
     type: Boolean,

@@ -43,6 +43,8 @@
 <script setup lang="ts">
 import { type Ref, ref } from "vue";
 
+const { $baseServerDefault } = useNuxtApp();
+
 definePageMeta({
   name: "login",
   layout: "default",
@@ -61,7 +63,15 @@ const updatePassword = (value: string) => {
   password.value = value.replaceAll(" ", "");
 };
 
-const login = () => {
+const login = async () => {
+  // try {
+  //   const result = await $baseServerDefault("/data");
+
+  //   console.log("Data:", result);
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  // }
+
   router.replace({ path: "/" });
 };
 </script>
